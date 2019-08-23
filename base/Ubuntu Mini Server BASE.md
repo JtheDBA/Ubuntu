@@ -10,7 +10,7 @@ SET VG=Server Templates
 SET BF=%VDID%\%VG%
 %VB% createvm --name "%VM%" --groups "/Server Templates" --ostype Ubuntu_64 --register
 %VB% modifyvm "%VM%" --snapshotfolder default --clipboard bidirectional --draganddrop hosttoguest
-%VB% modifyvm "%VM%" --memory 2048 --boot1 dvd --boot2 disk --boot3 none --boot4 none --firmware efi --chipset piix3 --acpi on --ioapic on --rtcuseutc on --cpus 2 --cpuhotplug on --cpuexecutioncap 100 --pae on --paravirtprovider kvm --hpet on --hwvirtex on --nestedpaging on
+%VB% modifyvm "%VM%" --memory 2048 --boot1 dvd --boot2 disk --boot3 none --boot4 none --firmware bios --chipset piix3 --acpi on --ioapic on --rtcuseutc on --cpus 2 --cpuhotplug on --cpuexecutioncap 100 --pae on --paravirtprovider kvm --hpet on --hwvirtex on --nestedpaging on
 %VB% modifyvm "%VM%" --vram 16 --monitorcount 1 --accelerate3d off --audio none --usb on --usbehci on
 %VB% modifyvm "%VM%" --nic1 bridged --cableconnected1 on --nictype1 virtio --bridgeadapter1 "%VNIC%"
 %VB% storagectl "%VM%" --name "IDE" --add ide --controller PIIX4 --hostiocache on --bootable on
@@ -20,7 +20,7 @@ SET BF=%VDID%\%VG%
 %VB% storageattach "%VM%" --storagectl "SATA" --port 0 --type hdd --medium "%BF%\%VM%\%VM%.vdi" --mtype normal
 %VB% startvm "%VM%"
 ```
-Use all defaults using LVM and host name UBU1804MINI. Note: am not sure what is causing this but certain versions of VirtualBox seem to cause the automated installation of Ubuntu Mini to stop and go to the installation steps list at the language and partitioning steps. I could not choose a default language so was stuck with non-United States English i.e. Great Britain. This can be changed later but I thought it was strange.
+Use all defaults using LVM and host name ubu1804mini. 
 
 ##
 
