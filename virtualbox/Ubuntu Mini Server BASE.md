@@ -1,4 +1,5 @@
 # Ubuntu Mini Server BASE
+
 ## Purpose
 
 Create a bare minimum Ubuntu server in VirtualBox to use as a template for all VirtualBox labs, test scenarios, etc.

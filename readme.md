@@ -18,10 +18,9 @@ There is crap for home users and crap for professional uses i.e. small businesse
 
 Common crap is crap that both home and professional users could potentially benefit from including:
 
-*  [centralized apt package cache](common/apt-cacher-ng.md) apt-cacher-ng - download packages once instead of for each existing or new installation
-*  centralized location for software and .iso images - see above
+*  centralized apt package cache [apt-cacher-ng](common/apt-cacher-ng.md) - download packages once instead of for each existing or new installation
+*  centralized location for software and [.iso images](common/Maintaining Local Images.md) - see above
 *  centralized location for basic installation and operational scripts - need something? go here
-*  a common database; I chose MariaDB
 
 # Servers
 
@@ -30,13 +29,20 @@ Common crap is crap that both home and professional users could potentially bene
 
 # Desktops
 
-Simple desktop crap. Including how to quickly create a [VirtualBox VM for anything you have an .iso image for](../desktop/Ubuntu Desktops in VirtualBox.md).
+Simple desktop crap. Including how to quickly create a VirtualBox VM for anything you have an .iso image for.
 
 # VirtualBox Labs
 
 # Neat Projects
 
-# Resources
-Most of the contents in this repository come from pieces parts from the Internet and trial and failure in virtual machines from version 14.04 and beyond. While I am certain I have missed numerous resources that I do apologize for that here's a list of current and active links that I know of that were helpful.
+## Github
 
-* [https://docs.trentsonlinedocs.xyz/lxd_container_home_server_networking_for_dummies/]
+-  [mini-stack](https://github.com/containercraft/mini-stack) - Kathryn Morgan's Hypervisor Lab & Development Stack
+-  [ciab-remote-desktop](https://github.com/bmullan/ciab-remote-desktop) - Brian Mullins's Cloud in a Box (CIAB) Remote Desktop System]
+
+# Resources
+
+Most of the contents in this repository come from pieces parts from the Internet and trial and failure in virtual machines from version 14.04 and beyond. While I am certain I have missed numerous resources I do apologize for that.
+
+-  [Galileo Labs Wiki](http://wiki.csgalileo.org/start)
+

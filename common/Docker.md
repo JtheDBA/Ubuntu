@@ -1,5 +1,8 @@
 # Docker
 
+-  *Standard disclaimer: do not assume I know what I am doing or any instructions below should be used outside of personal experimentation and learning. All comments are my own and do not reflect the thoughts or direction of my employer, family, friends, favorite television and radio station or anything else.*
+-  *Work in progress*
+
 ## Install
 
 ```Bash

@@ -322,6 +322,17 @@ chmod o-w /var/tmp
 
 #
 
+# Resources
+
+https://www.ncsc.gov.uk/collection/end-user-device-security/platform-specific-guidance/ubuntu-18-04-lts
+https://rootco.de/2018-01-19-opensuse-btrfs-subvolumes/
+https://susedoc.github.io/doc-sle/SLE12SP3/SLES-storage/html/cha-filesystems.html#sec-filesystems-major-btrfs
+https://wiki.archlinux.org/index.php/Snapper#Suggested_filesystem_layout
+https://www.server-world.info/en/note?os=Ubuntu_18.04&p=realmd
+https://wiki.archlinux.org/index.php/Snapper#Suggested_filesystem_layout
+https://www.reddit.com/r/Ubuntu/comments/7qp9gb/btrfs_pop_os_recommended_subvolumes/
+https://askubuntu.com/questions/57808/what-is-the-popularity-contest-package-for#57811
+https://help.ubuntu.com/lts/serverguide/automatic-updates.html
 
 
 
@@ -534,17 +545,6 @@ apt dist-upgrade -y
 
 
 
-# Resources
-
-https://www.ncsc.gov.uk/collection/end-user-device-security/platform-specific-guidance/ubuntu-18-04-lts
-https://rootco.de/2018-01-19-opensuse-btrfs-subvolumes/
-https://susedoc.github.io/doc-sle/SLE12SP3/SLES-storage/html/cha-filesystems.html#sec-filesystems-major-btrfs
-https://wiki.archlinux.org/index.php/Snapper#Suggested_filesystem_layout
-https://www.server-world.info/en/note?os=Ubuntu_18.04&p=realmd
-https://wiki.archlinux.org/index.php/Snapper#Suggested_filesystem_layout
-https://www.reddit.com/r/Ubuntu/comments/7qp9gb/btrfs_pop_os_recommended_subvolumes/
-https://askubuntu.com/questions/57808/what-is-the-popularity-contest-package-for#57811
-https://help.ubuntu.com/lts/serverguide/automatic-updates.html
 
 #### Update System and System Updates
 
