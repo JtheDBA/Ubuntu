@@ -1,5 +1,7 @@
 # Ubuntu Desktops in VirtualBox
 
+-  *Standard disclaimer: do not assume I know what I am doing or any instructions below should be used outside of personal experimentation and learning. All comments are my own and do not reflect the thoughts or direction of my employer, family, friends, favorite television and radio station or anything else.*
+
 This document attempts to simply the installation of Ubuntu desktops into VirtualBox virtual machines using a script for VM creation.
 
 Installing a Linux desktop into a virtual machine is helpful in many ways. You can use a virtual machine to test new versions or different flavors of various desktops. You can also maintain virtual machines to test updates before they are applied to physical Linux desktops.
@@ -36,7 +38,7 @@ Tailor to your personal environment. For most of my host computers 2 CPUs and 4G
 
 ### Video
 
-%VB% modifyvm "%VM%" --vram 128 --monitorcount 1 --graphicscontroller vmsvga --accelerate3d off --audio dsound --audiocontroller ac97 --audiocodec ad1980 --usb on --usbehci on
+`%VB% modifyvm "%VM%" --vram 128 --monitorcount 1 --graphicscontroller vmsvga --accelerate3d off --audio dsound --audiocontroller ac97 --audiocodec ad1980 --usb on --usbehci on`
 
 As of VirtualBox version 6, I have found the vmsvga graphics controller with 3-D acceleration off to be the best performing settings for most use cases on a Windows host.
 Of course, this may differ on a Linux host and most experts recommend using the VirtualBox vboxsvga graphics controller. But for Linux virtual machines the graphics settings below seem to work best after the VirtualBox guest additions have been installed.
@@ -49,14 +51,14 @@ If you like to play very modern games you probably do not want to do things like
 
 ### Install Media
 
-%VB% storageattach "%VM%" --storagectl "IDE" --port 1 --device 0 --type dvddrive --medium "%VISO%\%VM%.iso"
+`%VB% storageattach "%VM%" --storagectl "IDE" --port 1 --device 0 --type dvddrive --medium "%VISO%\%VM%.iso"`
 
 Using the name of the .iso install CD/DVD for the VM name makes this very simple... ( ??? )
 
 ### Virtual Hard Disk
 
-%VB% createhd --filename "%BF%\%VM%\%VM%.vdi" --size 80000
-%VB% storageattach "%VM%" --storagectl "SATA" --port 0 --type hdd --medium "%BF%\%VM%\%VM%.vdi" --mtype normal
+`%VB% createhd --filename "%BF%\%VM%\%VM%.vdi" --size 80000`
+`%VB% storageattach "%VM%" --storagectl "SATA" --port 0 --type hdd --medium "%BF%\%VM%\%VM%.vdi" --mtype normal`
 
 Using the name of the .iso install CD/DVD for the VM name and the name of the virtual disk again makes this very simple... ( ??? )
 

@@ -1,5 +1,8 @@
 # Ubuntu Mini Server BASE
 
+-  *Standard disclaimer: do not assume I know what I am doing or any instructions below should be used outside of personal experimentation and learning. All comments are my own and do not reflect the thoughts or direction of my employer, family, friends, favorite television and radio station or anything else.*
+-  *Work in progress*
+
 ## Purpose
 
 Create a bare minimum Ubuntu server in VirtualBox to use as a template for all VirtualBox labs, test scenarios, etc.
@@ -22,9 +25,6 @@ SET BF=%VDID%\%VG%
 %VB% startvm "%VM%"
 ```
 Use all defaults using LVM and host name ubu1804mini. 
-
-##
-
 
 ## Finish VM
 

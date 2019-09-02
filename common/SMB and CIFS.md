@@ -110,12 +110,12 @@ tasksel install samba-server
 cp /etc/samba/smb.conf ~/smb.conf_backup
 grep -v -E "^#|^;" ~/smb.conf_backup | grep . > smb.conf
 
-sed -ie 's/WORKGROUP/7497HOME/' smb.conf
+sed -i -e 's/WORKGROUP/7497HOME/' smb.conf
 
-sed -ie '/\[printers\]/,$d' smb.conf
+sed -i -e '/\[printers\]/,$d' smb.conf
 
-sed -ie '/obey pam/,/usershare allow guests/d' smb.conf
-sed -ie '/unix password sync/,/usershare allow guests/d' smb.conf
+sed -i -e '/obey pam/,/usershare allow guests/d' smb.conf
+sed -i -e '/unix password sync/,/usershare allow guests/d' smb.conf
 
 cat smb.conf > /etc/samba/smb.conf
 

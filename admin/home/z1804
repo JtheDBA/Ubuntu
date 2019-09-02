@@ -1,8 +1,0 @@
-cd /mnt/smb/local/download
-zsync -i ubuntu-18.04.2-desktop-amd64.iso http://releases.ubuntu.com/18.04.3/ubuntu-18.04.3-desktop-amd64.iso.zsync
-zsync -i ubuntu-18.04.2-live-server-amd64.iso -i ubuntu-18.04.3-desktop-amd64.iso http://releases.ubuntu.com/18.04.3/ubuntu-18.04.3-live-server-amd64.iso.zsync
-zsync -i ubuntu-mate-18.04.2-desktop-amd64.iso -i ubuntu-18.04.3-desktop-amd64.iso http://cdimage.ubuntu.com/ubuntu-mate/releases/18.04.3/release/ubuntu-mate-18.04.3-desktop-amd64.iso.zsync
-zsync -i lubuntu-18.04.2-desktop-amd64.iso -i ubuntu-18.04.3-desktop-amd64.iso http://cdimage.ubuntu.com/lubuntu/releases/18.04.3/release/lubuntu-18.04.3-desktop-amd64.iso.zsync
-zsync -i xubuntu-18.04.2-desktop-amd64.iso -i ubuntu-18.04.3-desktop-amd64.iso http://cdimage.ubuntu.com/xubuntu/releases/18.04.3/release/xubuntu-18.04.3-desktop-amd64.iso.zsync
-zsync -i kubuntu-18.04.2-desktop-amd64.iso -i ubuntu-18.04.3-desktop-amd64.iso http://cdimage.ubuntu.com/kubuntu/releases/18.04.3/release/kubuntu-18.04.3-desktop-amd64.iso.zsync
-

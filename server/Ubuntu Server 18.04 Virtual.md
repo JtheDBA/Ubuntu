@@ -120,6 +120,3 @@ sudo -i
 apt update
 apt install -y open-vm-tools
 ```
-
-
-apt install -y apt-cacher-ng cifs-utils deborphan libcups2 lynx mc nfs-common p7zip-full p7zip-rar rar samba-common tree unzip zip zsync

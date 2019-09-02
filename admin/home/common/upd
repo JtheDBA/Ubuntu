@@ -1,5 +1,0 @@
-sudo apt update
-sudo apt upgrade -y
-if [ -f /var/run/reboot-required ]; then
-sudo shutdown -r now
-fi

@@ -1,3 +1,0 @@
-cd /media/${USER}/VB*
-sudo ./VBoxLinuxAdditions.run
-sudo shutdown -r now

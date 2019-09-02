@@ -1,5 +1,0 @@
-sudo apt install -y linux-headers-$(uname -r) build-essential dkms
-cd \media\${USER}\VB*
-sudo ./VBoxLinuxAdditions.run
-sudo shutdown -r now
-

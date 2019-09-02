@@ -10,6 +10,12 @@ In both cases, I'm in the process of moving years of text files containing scrip
 
 Also note, I am well aware of solutions like Vagrant and Docker.
 
+# Standard Disclaimers
+
+*Do not assume I know what I am doing or anything should be used outside of personal experimentation and learning. All comments are my own and do not reflect the thoughts or direction of my employer, family, friends, favorite television and radio station or anything else.*
+
+*This is always work in progress. Learn first, copy and paste second. If I feel anything is "final" I will note it.*
+
 # Crap That's Here
 
 There is crap for home users and crap for professional uses i.e. small businesses, etc. I am likely not qualified to comment on large Enterprise crap as a basement hobbyist; but I may try or pretend to be.
@@ -37,8 +43,9 @@ Simple desktop crap. Including how to quickly create a VirtualBox VM for anythin
 
 ## Github
 
--  [mini-stack](https://github.com/containercraft/mini-stack) - Kathryn Morgan's Hypervisor Lab & Development Stack
+-  [hardending]https://github.com/konstruktoid/hardening) - Thomas Sjögren's aka konstruktoid's Ubuntu Hardening Project
 -  [ciab-remote-desktop](https://github.com/bmullan/ciab-remote-desktop) - Brian Mullins's Cloud in a Box (CIAB) Remote Desktop System]
+-  [mini-stack](https://github.com/containercraft/mini-stack) - Kathryn Morgan's Hypervisor Lab & Development Stack
 
 # Resources
 

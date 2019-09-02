@@ -12,7 +12,7 @@ I keep all of my .iso images in a shared folder available to multiple systems an
 sudo apt install transmission-cli zsync
 ```
 
-`zsync` accepts one or more input files using the `-i name` arguments and will combine all specified input files then requires the last argument to be the remote location of the .zsync file used to determine what blocks need downloaded to make the new .iso image complete.
+`zsync` accepts one or more input files using the `-i name` aguments and will combine all specified input files then requires the last argument to be the remote location of the .zsync file used to determine what blocks need downloaded to make the new .iso image complete.
 
 `transmission-cli` the command line version of Bittorrent but any Bittorrent client can be used (I use the one in Download Station on my Synology NAS). Bittorrent helps speed up downloads and contributes upload bandwidth for others joining the torrent swarm versus `zsync` connecting to one remote server.
 
@@ -37,8 +37,32 @@ When the desktop image has finished downloading it can be used as input to other
 ```Bash
 zsync -i ubuntu-18.04.2-live-server-amd64.iso -i ubuntu-18.04.3-desktop-amd64.iso http://releases.ubuntu.com/18.04.3/ubuntu-18.04.3-live-server-amd64.iso.zsync
 zsync -i ubuntu-mate-18.04.2-desktop-amd64.iso -i ubuntu-18.04.3-desktop-amd64.iso http://cdimage.ubuntu.com/ubuntu-mate/releases/18.04.3/release/ubuntu-mate-18.04.3-desktop-amd64.iso.zsync
-zsync -i xubuntu-18.04.2-desktop-amd64.iso -i ubuntu-18.04.3-desktop-amd64.iso http://cdimage.ubuntu.com/xubuntu/releases/18.04.3/release/xubuntu-18.04.3-desktop-amd64.iso.zsync
 zsync -i kubuntu-18.04.2-desktop-amd64.iso -i ubuntu-18.04.3-desktop-amd64.iso http://cdimage.ubuntu.com/kubuntu/releases/18.04.3/release/kubuntu-18.04.3-desktop-amd64.iso.zsync
+zsync -i lubuntu-18.04.2-desktop-amd64.iso -i ubuntu-18.04.3-desktop-amd64.iso http://cdimage.ubuntu.com/lubuntu/releases/18.04.3/release/lubuntu-18.04.3-desktop-amd64.iso.zsync
+zsync -i xubuntu-18.04.2-desktop-amd64.iso -i ubuntu-18.04.3-desktop-amd64.iso http://cdimage.ubuntu.com/xubuntu/releases/18.04.3/release/xubuntu-18.04.3-desktop-amd64.iso.zsync
 ```
 
 Any combination of the above can be used to update and .iso to a newer version including beta and new versions of Ubuntu or any OS that provides a .zsync file for downloading.
+
+# Other Distributions
+
+1.  Linux Mint - no .zsync - BOO!
+2.  elementary OS - wanted $
+3.  Zorin OS - $ and no .zsync
+4.  KDE neon
+5.  Pop!_OS
+6.  Linux Lite - `http://repo.linuxliteos.com/linuxlite/isos/4.6/` .torrents
+7.  Lubuntu **above**
+8.  Peppermint OS - `https://peppermintos.com/iso/Peppermint-10-20190514-amd64.iso.torrent` 
+9.  Xubuntu **above**
+10. Ubuntu MATE **above**
+11. Kubuntu **above**
+12. Ubuntu Kylin ? probably ?
+13. Voyager Live
+14. Nitrux - $
+15. Linux Kodachi
+16. Emmabuntüs
+17. Ultimate Edition
+18. LXLE *development based on 18.04 was recently restarted*
+19. Bodhi Linux
+20. Ubuntu Budgie
