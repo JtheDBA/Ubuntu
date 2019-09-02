@@ -35,9 +35,12 @@ Common crap is crap that both home and professional users could potentially bene
 
 # Desktops
 
-Simple desktop crap. Including how to quickly create a VirtualBox VM for anything you have an .iso image for.
+Simple desktop crap. Including how to [quickly create a VirtualBox VM for anything you have an .iso image for](virtualbox/Ubuntu Desktops in VirtualBox.md).
 
 # VirtualBox Labs
+
+- [LXD Lab](virtualbox/LXD Lab.md)
+- [Docker Lab](virtualbox/Docker Lab.md)
 
 # Neat Projects
 
@@ -52,4 +55,6 @@ Simple desktop crap. Including how to quickly create a VirtualBox VM for anythin
 Most of the contents in this repository come from pieces parts from the Internet and trial and failure in virtual machines from version 14.04 and beyond. While I am certain I have missed numerous resources I do apologize for that.
 
 -  [Galileo Labs Wiki](http://wiki.csgalileo.org/start)
+-  [Ubuntu Installation Guide](https://help.ubuntu.com/lts/installation-guide/amd64/index.html)
+-  [Aaron Toponce : Linux. GNU. Freedom.](https://pthree.org/)
 
