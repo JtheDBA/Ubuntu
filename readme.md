@@ -47,8 +47,9 @@ Simple desktop crap. Including how to [quickly create a VirtualBox VM for anythi
 ## Github
 
 -  [hardending]https://github.com/konstruktoid/hardening) - Thomas Sjögren's aka konstruktoid's Ubuntu Hardening Project
--  [ciab-remote-desktop](https://github.com/bmullan/ciab-remote-desktop) - Brian Mullins's Cloud in a Box (CIAB) Remote Desktop System]
+-  [ciab-remote-desktop](https://github.com/bmullan/ciab-remote-desktop) - Brian Mullins's Cloud in a Box (CIAB) Remote Desktop System
 -  [mini-stack](https://github.com/containercraft/mini-stack) - Kathryn Morgan's Hypervisor Lab & Development Stack
+-  [SnapRAID](https://github.com/amadvance/snapraid) - Andrea Mazzoleni's backup program for disk arrays; stores parity information of data and recovers from up to six disk failures
 
 # Resources
 
