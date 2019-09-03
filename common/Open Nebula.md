@@ -46,3 +46,6 @@ exit
 lynx http://127.0.0.1:9869
 ```
 
+# Resources
+
+- [Using LXD and KVM on the Same Host](https://opennebula.org/using-lxd-and-kvm-on-the-same-host/)
