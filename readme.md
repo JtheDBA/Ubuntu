@@ -25,7 +25,7 @@ There is crap for home users and crap for professional uses i.e. small businesse
 Common crap is crap that both home and professional users could potentially benefit from including:
 
 *  centralized apt package cache [apt-cacher-ng](common/apt-cacher-ng.md) - download packages once instead of for each existing or new installation
-*  centralized location for software and [.iso images](common/Maintaining Local Images.md) - see above
+*  centralized location for software and .iso [images](common/Maintaining Local Images.md) - see above
 *  centralized location for basic installation and operational scripts - need something? go here
 
 # Servers
@@ -35,18 +35,18 @@ Common crap is crap that both home and professional users could potentially bene
 
 # Desktops
 
-Simple desktop crap. Including how to [quickly create a VirtualBox VM for anything you have an .iso image for](virtualbox/Ubuntu Desktops in VirtualBox.md).
+Simple desktop crap. Including how to [quickly create a VirtualBox VM](virtualbox/Ubuntu Desktops in VirtualBox.md)  for anything you have an .iso image for.
 
 # VirtualBox Labs
 
-- [LXD Lab](virtualbox/LXD Lab.md)
-- [Docker Lab](virtualbox/Docker Lab.md)
+-  [LXD Lab](virtualbox/LXD Lab.md)
+-  [Docker Lab](virtualbox/Docker Lab.md)
 
 # Neat Projects
 
 ## Github
 
--  [hardending]https://github.com/konstruktoid/hardening) - Thomas Sjögren's aka konstruktoid's Ubuntu Hardening Project
+-  [hardending](https://github.com/konstruktoid/hardening) - Thomas Sjögren's aka konstruktoid's Ubuntu Hardening Project
 -  [ciab-remote-desktop](https://github.com/bmullan/ciab-remote-desktop) - Brian Mullins's Cloud in a Box (CIAB) Remote Desktop System
 -  [mini-stack](https://github.com/containercraft/mini-stack) - Kathryn Morgan's Hypervisor Lab & Development Stack
 -  [SnapRAID](https://github.com/amadvance/snapraid) - Andrea Mazzoleni's backup program for disk arrays; stores parity information of data and recovers from up to six disk failures
