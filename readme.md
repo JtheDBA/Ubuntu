@@ -35,7 +35,7 @@ Common crap is crap that both home and professional users could potentially bene
 
 # Desktops
 
-Simple desktop crap. Including how to [quickly create a VirtualBox VM](virtualbox/Ubuntu Desktops in VirtualBox.md)  for anything you have an .iso image for.
+Simple desktop crap. Including how to [quickly create a VirtualBox VM](virtualbox/Ubuntu%20Desktops%20in%20VirtualBox.md)  for anything you have an .iso image for.
 
 # VirtualBox Labs
 
