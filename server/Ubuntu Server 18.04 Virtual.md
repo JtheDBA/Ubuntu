@@ -45,13 +45,12 @@ Primary References
 1.  run PowerShell as Administrator
 2.  set some basic variables
 3.  create a new VM attached to the home LAN virtual switch
-4.  determine the location of the Ubuntu mini .iso and attach it to the IDE controller (replaces physical drive)
-5.  disable secure boot
-6.  create virtual disks and attach to the SCSI controller (used arrays for flexibility? 6 vs 4 lines why not?)
+4.  disable secure boot
+5.  create virtual disks and attach to the SCSI controller (used arrays for flexibility? 6 vs 4 lines why not?)
+6.  determine the location of the Ubuntu mini .iso and attach it
 7.  enable dynamic memory and set minimum and maximum memory
-8.  rename the NIC created at VM creation
-9.  enable guest service interface integration services
-10. start the VM
+8.  enable guest service interface integration services
+9.  start the VM
 
 ```PowerShell
 $vmmPath = 'V:\Hyper-V\'
@@ -61,21 +60,22 @@ $vm = "Ubuntu 18.04 Server"
 
 New-VM -MemoryStartupBytes 1024MB -Name $vm -Path $vmmPath -Generation 2 -SwitchName 'vSwitch External Home LAN'
 
-$iSO = Get-ChildItem -Path $vdiPath -Filter 'ubuntu*mini-amd64.iso'
-Set-VMDvdDrive -VMName $vm -Path $iSO.FullName -ControllerNumber 1 -ControllerLocation 0
 Set-VMFirmware $vm -EnableSecureBoot Off
 foreach ($disk in @(0,1)) {
     $vhdx = $vddPath + "UBU1804S" + $disk +".vhdx"
     $vsgb = @(128GB,16GB)[$disk]
-    New-VHD -Path $vhdx -SizeBytes $vsgb -Dynamic -BlockSizeBytes 1MB
+    New-VHD -Path $vhdx -SizeBytes $vsgb -Dynamic -BlockSizeBytes 1MB 
     Add-VMHardDiskDrive -VMName $vm -Path $vhdx -ControllerType SCSI -ControllerNumber 0 -ControllerLocation $disk
 }
+$iSO = Get-ChildItem -Path $vdiPath -Filter 'ubuntu*mini-amd64.iso'
+Add-VMDvdDrive -VMName $vm -Path $iSO.FullName -ControllerNumber 0 -ControllerLocation 2
+
 Set-VMMemory -VMName $vm -DynamicMemoryEnabled $true -MinimumBytes 512MB -MaximumBytes 4GB
-Set-VMNetworkAdapter -VMName $vm -Name 'Local LAN eth0'
 Enable-VMIntegrationService -VMName $vm -Name 'Guest Service Interface'
 Start-VM -Name $vm
+
 <# If DVD needs to be dismounted
-Set-VMDvdDrive -VMName $vm -Path $null -ControllerNumber 1 -ControllerLocation 0
+Set-VMDvdDrive -VMName $vm -Path $null -ControllerNumber 0 -ControllerLocation 2
 #>
 ```
 
@@ -84,11 +84,10 @@ Set-VMDvdDrive -VMName $vm -Path $null -ControllerNumber 1 -ControllerLocation 0
 Install the linux-azure kernel
 
 ```Shell
-sudo -i
-add-apt-repository universe
-apt update
-apt install -y linux-azure
-shutdown -r now
+sudo add-apt-repository universe
+sudo apt update
+sudo apt install -y linux-azure
+sudo shutdown -r 1
 ```
 
 ## VM Optimization
@@ -96,7 +95,7 @@ shutdown -r now
 If the BTRFS steps were used to install the file system optimization is not needed and can be skipped. Remove media from drive and take a checkpoint.
 
 ```PowerShell
-Set-VMDvdDrive -VMName $vm -Path $null -ControllerNumber 1 -ControllerLocation 0
+Set-VMDvdDrive -VMName $vm -Path $null -ControllerNumber 0 -ControllerLocation 2
 Checkpoint-VM -Name $vm -SnapshotName 'BASE01'
 Start-VM -Name $vm
 ```
