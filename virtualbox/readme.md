@@ -3,6 +3,14 @@
 -  *Standard disclaimer: do not assume I know what I am doing or any instructions below should be used outside of personal experimentation and learning. All comments are my own and do not reflect the thoughts or direction of my employer, family, friends, favorite television and radio station or anything else.*
 -  *Work in progress*
 
+## Important
+
+Oracle VM VirtualBox Base Packages are freely available for Windows, Mac OS X, Linux and Solaris x86 platforms under GPLv2.
+
+**Oracle VM VirtualBox Extension Pack is free for personal, educational or evaluation use under the terms of the [VirtualBox Personal Use and Evaluation License](https://www.virtualbox.org/wiki/VirtualBox_PUEL) on Windows, Mac OS X, Linux and Solaris x-86 platforms. (else $$ varying upon who you ask but $1000 per socket or $50 per user with 200 user minimum)**
+
+*Back to the regularly scheduled program already in progress*
+
 I use Virtual Box as my primary goofing around at home virtualization product.
 
 -  [Download Oracle VM VirtualBox](https://www.oracle.com/virtualization/technologies/vm/downloads/virtualbox-downloads.html)

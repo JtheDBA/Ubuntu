@@ -236,3 +236,7 @@ DIR "%BF%\%VM%"
 del "%BF%\%VM%\%VM%.vdi"
 %VB% snapshot "%VM%" take "BASE" --description "Freezes .VDI to SSD leaving differencing disks on HDD drives"
 ```
+
+# Resources
+
+-  [Oracle VM VirtualBox 6.0: 3D Acceleration for Ubuntu 18.04 Guest | Oracle Simon Coter Blog](https://blogs.oracle.com/scoter/oracle-vm-virtualbox-6-3d-acceleration-for-ubuntu-1804-guest)

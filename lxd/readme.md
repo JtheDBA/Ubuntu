@@ -40,7 +40,7 @@ If using BTRFS everything as of 18.04 LTS is ready. If using ZFS as a filesystem
 -  [ContainerBox](https://github.com/AlexandreDey/ContainerBox/) - GitHub - AlexandreDey/ContainerBox: Tool on top of LXD to easily create and use graphical containers
 -  [trentdocs_website](https://github.com/TrentSPalmer/trentdocs_website)
 
-[Documentation]()
+[Documentation and Blogs](https://lxd.readthedocs.io/en/latest/)
 -  [Trent Docs](https://docs.trentsonlinedocs.xyz)
    -  [LXD Container Home Server Networking For Dummies](https://docs.trentsonlinedocs.xyz/lxd_container_home_server_networking_for_dummies/)
    -  [More Notes and Tips for Using LXD](https://docs.trentsonlinedocs.xyz/lxd_container_foo/)
@@ -52,3 +52,6 @@ If using BTRFS everything as of 18.04 LTS is ready. If using ZFS as a filesystem
 -  [Ubuntu 18.04 LXD/LXC, ZFS, Docker, and Advanced Networking](https://homelab.city/ubuntu-18-04-lxd-zfs-docker-and-networking/) - maybe outdated but running Docker and LXD and Docker in a container LXD
 -  [How to easily run graphics-accelerated GUI apps in LXD containers on your Ubuntu desktop](https://blog.simos.info/how-to-easily-run-graphics-accelerated-gui-apps-in-lxd-containers-on-your-ubuntu-desktop/) – Mi blog lah!
 -  [Creating an LXD container for graphics applications](https://bitsandslices.wordpress.com/2015/12/08/creating-an-lxd-container-for-graphics-applications/) - bitsandslices
+-  [Clustering in LXD 3.0](https://www.mightygio.com/blog/clustering-in-lxd-3/)
+-  [LXD Clusters: A Primer](https://ubuntu.com/blog/lxd-clusters-a-primer)
+-  [Stéphane Graber's website](https://stgraber.org/category/lxd/)
