@@ -1,5 +1,8 @@
 # Ubuntu Desktops in VirtualBox
 
+## Important
+
+-  Oracle VM VirtualBox Base Packages are freely available for Windows, Mac OS X, Linux and Solaris x86 platforms under GPLv2. **Oracle VM VirtualBox Extension Pack is free for personal, educational or evaluation use under the terms of the [VirtualBox Personal Use and Evaluation License](https://www.virtualbox.org/wiki/VirtualBox_PUEL) on Windows, Mac OS X, Linux and Solaris x-86 platforms. (else $$ varying upon who you ask but $1000 per socket or $50 per user with 200 user minimum)**
 -  *Standard disclaimer: do not assume I know what I am doing or any instructions below should be used outside of personal experimentation and learning. All comments are my own and do not reflect the thoughts or direction of my employer, family, friends, favorite television and radio station or anything else.*
 
 This document attempts to simply the installation of Ubuntu desktops into VirtualBox virtual machines using a script for VM creation.
@@ -20,6 +23,7 @@ Of course there are some limits and assumptions.
 I have tested and used the following (in descending order from favorite to installed and tested but likely would never use unless forced to):
 
 -  MX-18.3_x64
+-  MX-19_x64
 -  xubuntu-18.04.2-desktop-amd64
 -  ubuntu-18.04.2-desktop-amd64
 -  ubuntu-19.04-desktop-amd64
@@ -29,7 +33,7 @@ I have tested and used the following (in descending order from favorite to insta
 I highly recommend using the name of the .iso install CD/DVD for the VM name and virtual disk for simplicity, consistency and pure laziness. Example:
 
 ```DOS .bat
-SET VM=MX-18.3_x64
+SET VM=MX-19_x64
 ```
 
 ## Create VM and Launch Installer

@@ -11,15 +11,22 @@ Oracle VM VirtualBox Base Packages are freely available for Windows, Mac OS X, L
 
 *Back to the regularly scheduled program already in progress*
 
-I use Virtual Box as my primary goofing around at home virtualization product.
+I use Virtual Box as my primary goofing around at home virtualization product **for personal, educational or evaluation use**.
 
 -  [Download Oracle VM VirtualBox](https://www.oracle.com/virtualization/technologies/vm/downloads/virtualbox-downloads.html)
 -  [Pre-Built Developer VMs](https://www.oracle.com/downloads/developer-vm/community-downloads.html)
 -  [vagrant-boxes](https://github.com/oracle/vagrant-boxes) - [Vagrant](https://vagrantup.com/) builds for Oracle products and other examples
 
+Also, there are much easier ways to create or obtain most of solutions in this subdirectory, but I prefer to learn through doing then will use automation and/or prepared things later.
+
+-  [OSBoxes VirtualBox Images](https://www.osboxes.org/virtualbox-images/)
+-  [VirtualBoxes – Free VirtualBox Images](https://virtualboxes.org/images/)
+-  [Vagrant](https://vagrantup.com/)
+-  [Turnkey Linux](https://www.turnkeylinux.org)
+
 ## Command Prompt / Shell
 
-I prefer to do work for now from the command line versus using a GUI. And yes, I fully realize [Vagrant](https://vagrantup.com/) exists along with other rapid/standard software applications. This, is how I learn for now.
+I prefer to do work for now from the command line versus using a GUI.
 
 ### Variables
 
