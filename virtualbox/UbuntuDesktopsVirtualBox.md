@@ -216,7 +216,7 @@ This step compresses the virtual disk then clones it to SSD before taking a snap
 The snapshot can be deleted, disk compressed, and snapshot re-taken periodically. This also speeds the backup process as the virtual disk on SSD will be sent to backup medium once and the (much smaller) snapshot will be updated over time.
 
 ```DOS .bat
-%VB% storageattach "%VM%" --storagectl "IDE" --port 1 --device 0 --type dvddrive --medium "%VISO%\gparted-live-0.33.0-1-i686.iso"
+%VB% storageattach "%VM%" --storagectl "IDE" --port 1 --device 0 --type dvddrive --medium "%VISO%\gparted-live-1.0.0-5-i686.iso"
 %VB% startvm "%VM%"
 ```
 
