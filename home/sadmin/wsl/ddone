@@ -1,0 +1,1 @@
+sed -i -e 's/\.\(m[kp][v4]\) */.\1/;s/^\(.*\)\t\(.*\)$/if \[ -e "\/srv\/DONE\/\2.mp4" \]; then rm "\/mnt\/cifs\/129\/TODO\/\1";fi/' ffmpeg.done

@@ -1,0 +1,8 @@
+while [ -s /mnt/TODO/ffmpeg.todo ]
+do
+head -n1 /mnt/TODO/ffmpeg.todo > ffmpeg.todo
+sed -i -e '1d' /mnt/TODO/ffmpeg.todo
+cut -f 1,5 ffmpeg.todo >> ffmpeg.done
+sed -i -f ffmpeg.sed ffmpeg.todo
+. ffmpeg.todo
+done

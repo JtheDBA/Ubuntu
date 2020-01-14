@@ -1,0 +1,56 @@
+HIGHLIGHT='\033[1;32m'
+NC='\033[0m'
+echo -e "${HIGHLIGHT}Configure packages...${NC}"
+apt update
+apt dist-upgrade -y
+apt remove -y popularity-contest unattended-upgrades
+apt install -y apparmor-profiles apparmor-utils auditd cifs-utils libcups2 lynx mc nfs-common p7zip-full p7zip-rar rar samba-common unzip zip tree
+echo -e "${HIGHLIGHT}Writing fstab config...${NC}"
+sed -ie '/\s\/home\s/ s/defaults/defaults,noexec,nosuid,nodev/' /etc/fstab
+sed -ie '/\s\/tmp\s/ s/defaults/defaults,nosuid,nodev/' /etc/fstab
+chmod 1777 -R /tmp
+chown root.root /tmp
+echo -e "${HIGHLIGHT}Configuring /etc/ configurations...${NC}"
+sed -ie '/^DIR_MODE=/ s/=[0-9]*\+/=0700/' /etc/adduser.conf
+sed -ie '/^UMASK\s\+/ s/022/077/' /etc/login.defs
+sed -ie '/^SHELL=/ s/=.*\+/=\/usr\/sbin\/nologin/' /etc/default/useradd
+sed -ie '/^DSHELL=/ s/=.*\+/=\/usr\/sbin\/nologin/' /etc/adduser.conf
+sed -ie '/^enabled=1$/ s/1/0/' /etc/default/apport
+echo -e "${HIGHLIGHT}Configure su execution...${NC}"
+dpkg-statoverride --update --add root adm 4750 /bin/su
+echo -e "${HIGHLIGHT}Configuring minimum password requirements...${NC}"
+apt install -yf libpam-pwquality
+echo -e "${HIGHLIGHT}Configuring apparmor...${NC}"
+aa-enforce /etc/apparmor.d/usr.bin.firefox
+aa-enforce /etc/apparmor.d/usr.sbin.avahi-daemon
+aa-enforce /etc/apparmor.d/usr.sbin.dnsmasq
+aa-enforce /etc/apparmor.d/bin.ping
+aa-enforce /etc/apparmor.d/usr.sbin.rsyslogd
+echo -e "${HIGHLIGHT}Configuring system auditing...${NC}"
+if [ ! -f /etc/audit/rules.d/tmp-monitor.rules ]; then
+echo "# Monitor changes and executions within /tmp
+-w /tmp/ -p wa -k tmp_write
+-w /tmp/ -p x -k tmp_exec" > /etc/audit/rules.d/tmp-monitor.rules
+fi
+if [ ! -f /etc/audit/rules.d/admin-home-watch.rules ]; then
+echo "# Monitor administrator access to /home directories
+-a always,exit -F dir=/home/ -F uid=0 -C auid!=obj_uid -k admin_home_user" > /etc/audit/rules.d/admin-home-watch.rules
+fi
+augenrules
+systemctl restart auditd.service
+echo -e "${HIGHLIGHT}Configuring error reporting...${NC}"
+systemctl stop apport.service
+systemctl disable apport.service
+systemctl mask apport.service
+echo -e "${HIGHLIGHT}Configuring additional directory permissions...${NC}"
+chmod o-w /var/crash
+chmod o-w /var/tmp
+echo -e "${HIGHLIGHT}Configuring firewall...${NC}"
+ufw status verbose
+ufw deny from 192.168.0.1 to any app OpenSSH
+ufw allow from 192.168.0.0/24 to any app OpenSSH
+ufw allow from 127.0.0.1
+ufw logging on
+ufw enable
+shutdown -h 3
+exit

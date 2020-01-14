@@ -1,0 +1,3 @@
+sudo apt install -y build-essential module-assistant
+sudo m-a prepare
+sudo shutdown -r now

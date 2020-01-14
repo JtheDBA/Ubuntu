@@ -1,0 +1,12 @@
+echo "Make symbolic links"
+for LOL in desktop lxc server vbox wsl
+do
+for POO in upd updone post1
+do
+if [ ! -e ~/$LOL/$POO ]; then
+ln -s ~/common/$POO ~/$LOL/$POO
+fi
+done
+done
+ln -s ~/common/upd ~/upd
+ln -s ~/common/updone ~/updone

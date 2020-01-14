@@ -1,0 +1,8 @@
+cd /srv/shared/download
+zsync -i ubuntu-18.04.3-desktop-amd64.iso http://releases.ubuntu.com/20.04/ubuntu-20.04-desktop-amd64.iso.zsync
+zsync -i ubuntu-18.04.3-live-server-amd64.iso -i ubuntu-20.04-desktop-amd64.iso http://releases.ubuntu.com/20.04/ubuntu-20.04-live-server-amd64.iso.zsync
+zsync -i ubuntu-mate-18.04.3-desktop-amd64.iso -i ubuntu-20.04-desktop-amd64.iso http://cdimage.ubuntu.com/ubuntu-mate/releases/20.04/release/ubuntu-mate-20.04-desktop-amd64.iso.zsync
+zsync -i lubuntu-18.04.3-desktop-amd64.iso -i ubuntu-20.04-desktop-amd64.iso http://cdimage.ubuntu.com/lubuntu/releases/20.04/release/lubuntu-20.04-desktop-amd64.iso.zsync
+zsync -i xubuntu-18.04.3-desktop-amd64.iso -i ubuntu-20.04-desktop-amd64.iso http://cdimage.ubuntu.com/xubuntu/releases/20.04/release/xubuntu-20.04-desktop-amd64.iso.zsync
+zsync -i kubuntu-18.04.3-desktop-amd64.iso -i ubuntu-20.04-desktop-amd64.iso http://cdimage.ubuntu.com/kubuntu/releases/20.04/release/kubuntu-20.04-desktop-amd64.iso.zsync
+

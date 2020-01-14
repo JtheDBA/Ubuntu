@@ -1,0 +1,19 @@
+# CBJ Windows 10
+//192.168.0.144/_TODO   /mnt/cifs/144/TODO    cifs username=joelmathias@live.com,noauto,rw,users,vers=3.0  0 0
+//192.168.0.144/_TODO2  /mnt/cifs/144/TODO2   cifs username=joelmathias@live.com,noauto,rw,users,vers=3.0  0 0
+//192.168.0.144/Stuff   /mnt/cifs/144/stuff    cifs username=joelmathias@live.com,noauto,rw,users,vers=3.0  0 0
+//192.168.0.144/Inbox   /mnt/cifs/144/inbox    cifs username=joelmathias@live.com,noauto,rw,users,vers=3.0  0 0
+# Server 2016
+//192.168.0.80/TODO /mnt/cifs/080/TODO        cifs    credentials=/root/.smbcredentials,uid=joel,gid=joel,iocharset=utf8,file_mode=0777,dir_mode=0777,vers=3.0  0 0
+//192.168.0.80/DONE /mnt/cifs/080/DONE        cifs    credentials=/root/.smbcredentials,uid=joel,gid=joel,iocharset=utf8,file_mode=0777,dir_mode=0777,vers=3.0  0 0
+# ReadyNAS 104
+//192.168.0.129/TODO /mnt/cifs/129/TODO        cifs    credentials=/root/.smbcredentials,uid=joel,gid=joel,iocharset=utf8,file_mode=0777,dir_mode=0777,vers=3.0  0 0
+# Synology NAS
+//192.168.0.130/archive  /mnt/cifs/130/archive    cifs credentials=/root/.smbcredentials,uid=joel,gid=joel,iocharset=utf8,file_mode=0777,dir_mode=0777,vers=3.0  0 0
+//192.168.0.130/download /mnt/cifs/130/download   cifs credentials=/root/.smbcredentials,uid=joel,gid=joel,iocharset=utf8,file_mode=0777,dir_mode=0777,vers=3.0  0 0
+//192.168.0.130/image    /mnt/cifs/130/image      cifs credentials=/root/.smbcredentials,uid=joel,gid=joel,iocharset=utf8,file_mode=0777,dir_mode=0777,vers=3.0  0 0
+//192.168.0.130/music    /mnt/cifs/130/music      cifs credentials=/root/.smbcredentials,uid=joel,gid=joel,iocharset=utf8,file_mode=0777,dir_mode=0777,vers=3.0  0 0
+//192.168.0.130/photo    /mnt/cifs/130/photo      cifs credentials=/root/.smbcredentials,uid=joel,gid=joel,iocharset=utf8,file_mode=0777,dir_mode=0777,vers=3.0  0 0
+//192.168.0.130/video    /mnt/cifs/130/video      cifs credentials=/root/.smbcredentials,uid=joel,gid=joel,iocharset=utf8,file_mode=0777,dir_mode=0777,vers=3.0  0 0
+# ReadyNAS 104
+//192.168.0.129/TODO /mnt/cifs/129/TODO        cifs    credentials=/root/.smbcredentials,iocharset=utf8,sec=ntlm,dir_mode=0777,file_mode=0777,vers=1.0    0   0
