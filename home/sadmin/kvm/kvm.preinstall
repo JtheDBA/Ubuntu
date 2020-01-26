@@ -1,0 +1,4 @@
+sudo add-apt-repository universe
+sudo apt update
+sudo apt install -y qemu-guest-agent
+sudo shutdown -r 1; exit

@@ -1,0 +1,4 @@
+apt -y --purge autoremove
+deborphan -n --find-config | xargs apt -y --purge autoremove
+apt -y autoclean
+apt -y clean

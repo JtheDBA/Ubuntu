@@ -1,5 +1,5 @@
 echo "Make symbolic links"
-for LOL in desktop lxc server vbox wsl
+for LOL in desktop lxc server vbox wsl hyperv
 do
 for POO in upd updone post1
 do

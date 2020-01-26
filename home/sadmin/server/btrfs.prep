@@ -1,0 +1,9 @@
+chmod 1777 -R /tmp
+chown root.root /tmp
+chmod 700 "/home/sadmin"
+cp /etc/fstab fstab.old
+sed -e '3,$d' /etc/fstab > fstab.new
+sed -e '/^#/d;/lv_temp1/s/defaults/defaults,nodev,nosuid/;s/subvol=@home/nodev,nosuid,subvol=@home/;s/defaults/defaults,noatime/' /etc/fstab >> fstab.new
+sed -e '/subvol=@ 0/!d;s/\/ */\/var\/log   /;s/subvol=@ 0 *1/noatime,subvol=@var-log,compress 0 2/' /etc/fstab >> fstab.new
+btrfs subvolume create /.snapshots
+shutdown -h now

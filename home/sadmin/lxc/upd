@@ -1,0 +1,5 @@
+apt update
+apt upgrade -y
+if [ -f /var/run/reboot-required ]; then
+echo lxc restart this container ...
+fi
