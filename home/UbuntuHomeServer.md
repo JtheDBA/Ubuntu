@@ -1,15 +1,21 @@
 # Ubuntu Home Server
 
+-  *Standard disclaimer: do not assume I know what I am doing or any instructions below should be used outside of personal experimentation and learning. All comments are my own and do not reflect the thoughts or direction of my employer, family, friends, favorite television and radio station or anything else.*
+-  *Work in progress*
 
+Personally I would purchase a NAS storage device that has the abilities create a small virtual machine to handle Ubuntu specific items but that's just me. However, if you needs are one or more of the following and you have the hardware and/or cash to invest in it:
 
-- Keep a central Linux package location to save download time and bandwidth
-- Share files
-- Keep safe backups of files for multiple computers
+- keep a central Linux package location to save download time and bandwidth
+- share files
+- keep safe backups of files for multiple computers
 - centralized location for items commonly used on Linux
 - want to play video to local devices
 - want to play music or audio to local devices
 - want to keep an image library for personal and/or private photos
-- 
+
+then you can follow my "guide" to accomplish most if not all of that. 
+
+**_ IGNORE EVERYTHING BEYOND THIS POINT _***
 
 ## Step 1 - Physical or Virtual
 
@@ -79,7 +85,7 @@ If you installed [apt-cacher-ng](../common/apt-cacher-ng.md) ... above ...
 
 
 
-
+```
 ../common
 ../desktop
 ../lxd
@@ -108,3 +114,4 @@ If you installed [apt-cacher-ng](../common/apt-cacher-ng.md) ... above ...
 ../virtualbox/DOS/vb.cmd
 ../virtualbox/DOS/vbupd.cmd
 ../virtualbox/DOS/visodown.cmd
+```

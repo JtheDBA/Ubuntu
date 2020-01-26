@@ -1,0 +1,18 @@
+apt purge -y lxd lxd-client
+apt install -y bridge-utils snapd
+snap install lxd
+cat >> /etc/sysctl.conf << FOOD
+# LXD
+fs.inotify.max_queued_events = 1048576
+fs.inotify.max_user_instances = 1048576
+fs.inotify.max_user_watches = 1048576
+#
+FOOD
+sed -i -e 's/End of file/LXD/' /etc/security/limits.conf
+cat >> /etc/security/limits.conf << FOOD
+* soft nofile 100000
+* hard nofile 100000
+
+# End of file
+FOOD
+shutdown -r 1; exit

@@ -1,7 +1,0 @@
-chmod 1777 -R /tmp
-chown root.root /tmp
-chmod 700 "/home/sadmin"
-cd
-sed -e '' fstab.template > fstab
-btrfs subvolume create /.snapshots
-shutdown -h now

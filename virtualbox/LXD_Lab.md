@@ -2,39 +2,87 @@
 
 -  *Standard disclaimer: do not assume I know what I am doing or any instructions below should be used outside of personal experimentation and learning. All comments are my own and do not reflect the thoughts or direction of my employer, family, friends, favorite television and radio station or anything else.*
 -  *Work in progress*
+-  *This can probably be done with Chef or insert automation tool here but I are learnding...*
 
 ## Clone the Base Ubuntu Server
 
 ```DOS .bat
-SET VM=Ubuntu LXD BASE
+SET VM=Ubuntu Server 18.04 LXD ZFS
 SET VG=Server Templates
 SET BF=%VDID%\%VG%
-%VB% clonevm "Ubuntu Server 18.04" --snapshot "BASE1804_01" --options link --name "%VM%" --basefolder "%BF%" --register
+%VB% clonevm "Ubuntu Server 18.04 BTRFS Secure EFI64" --snapshot "BASE2001" --options link --name "%VM%" --basefolder "%BF%" --register
 %VB% modifyvm "%VM%" --groups "/%VG%"
-%VB% modifyvm "%VM%" --memory 6144
+%VB% modifyvm "%VM%" --memory 4096
 %VB% modifyvm "%VM%" --nic2 bridged --cableconnected2 on --nictype2 virtio --bridgeadapter2 "%VNIC%" --nicpromisc2 allow-all
-FOR %A IN (1 2) DO %VB% createhd --filename "%BF%\%VM%\UBU1804_SATA%A.vdi" --size 12000%A
-FOR %A IN (1 2) DO %VB% storageattach "%VM%" --storagectl "SATA" --port %A --type hdd --medium "%BF%\%VM%\UBU1804_SATA%A.vdi" --mtype normal
+%VB% createhd --filename "%VSSD%\UBU1804_LXDZFS_SATA2.vdi" --size 120002
+%VB% createhd --filename "%VSSD%\UBU1804_LXDZFS_SATA3.vdi" --size 120003
+%VB% createhd --filename "%VSSD%\UBU1804_LXDZFS_SATA4.vdi" --size 8004
+%VB% storageattach "%VM%" --storagectl "SATA" --port 2 --type hdd --medium "%VSSD%\UBU1804_LXDZFS_SATA2.vdi" --mtype normal
+%VB% storageattach "%VM%" --storagectl "SATA" --port 3 --type hdd --medium "%VSSD%\UBU1804_LXDZFS_SATA3.vdi" --mtype normal
+%VB% storageattach "%VM%" --storagectl "SATA" --port 4 --type hdd --nonrotational on --medium "%VSSD%\UBU1804_LXDZFS_SATA4.vdi" --mtype normal
 %VB% startvm "%VM%"
 ```
 
-## Prepare LXD Base
+## Prepare LXD Standalone and BASE Snapshot for Cluster Nodes
 
-`"C:\Program Files (x86)\PuTTY\putty.exe" joel@192.168.0.?`
+I love doing everything through copy and paste via PuTTY: `"C:\Program Files (x86)\PuTTY\putty.exe" sadmin@192.168.0.?`
+
+Set the host name, get everything from the central server (if you haven't) then run the prepare step.
 
 ```Bash
-ip a
-
 sudo -i
-./updhost ubulxd
-sed -i -e 's/ubu1804s/ubulxd/' updhost
-apt-get purge lxd lxd-client -y
-apt-get install zfsutils-linux -y
+OLDHO=`cat /etc/hostname`
+NEWHO=ubu1804-lxd
+hostnamectl set-hostname ${NEWHO}
+sed -i -e "s/${OLDHO}/${NEWHO}/' /etc/hosts
+scp 192.168.0.184:server/lxd*
+```
+
+The next steps depend upon the backing file system you choose: ZFS (recommended ???) or BTRFS (no official recommendation)
+
+## ZFS
+
+Run `lxd.zfs.prep1` - the preparation script will restart your computer!
+
+Run `lxd.zfs.prep2` - this will list the unique identifiers for each disk and partition on your machine and print the basic shell for creating a ZFS pool, adding a SLOG, and creating a dataset to use for LXD.
+Obviously this could be scripted but, why..? 
+
+Run one of the following:
+  - `lxd.init.zfs.standalone`
+  - `lxd.init.zfs.node1` - first node in a cluster
+  - `lxd.init.zfs.nodes` - other nodes in the cluster
+
+## BTRFS
+
+Run `lxd.btrfs.prep1` - the preparation script will restart your computer!
+
+Run `lxd.btrfs.prep2` - 
+
+Run one of the following:
+  - `lxd.init.btrfs.standalone`
+  - `lxd.init.btrfs.node1` - first node in a cluster
+  - `lxd.init.btrfs.nodes` - other nodes in the cluster
+
+# Ignore EVERYTHING Beyond This Point
+  
+
+```Bash
+sudo -i
+OLDHO=`cat /etc/hostname`
+NEWHO=ubu1804-lxd
+hostnamectl set-hostname ${NEWHO}
+sed -i -e "s/${OLDHO}/${NEWHO}/' /etc/hosts
+scp 192.168.0.184:server/lxd*
+. lxd.prep
+```
+
+apt-get purge -y lxd lxd-client
+apt-get install -y bridge-utils zfsutils-linux
 snap install lxd
 
 cat > 01-netcfg.yaml << FOOD
-# This file describes the network interfaces available on your system
-# For more information, see netplan(5).
+This file describes the network interfaces available on your system
+For more information, see netplan(5).
 network:
   version: 2
   ethernets:
@@ -108,8 +156,8 @@ Take a snapshot for the next steps,
 %VB% showvminfo "%VM%"
 SET VG=Ubuntu LXD Lab
 SET BF=%VDID%\%VG%
-FOR %A IN (Standalone Node1 Node2 Node3) DO %VB% clonevm "Ubuntu LXD BASE" --snapshot "BASE" --options link --name "Ubuntu LXD %A" --basefolder "%VDID%" --register
-FOR %A IN (Standalone Node1 Node2 Node3) DO %VB% modifyvm "Ubuntu LXD %A" --groups "/%VG%"
+FOR %A IN (Node1 Node2 Node3) DO %VB% clonevm "Ubuntu Server 18.04 LXD ZFS" --snapshot "BASE" --options link --name "Ubuntu LXD %A" --basefolder "%VDID%" --register
+FOR %A IN (Node1 Node2 Node3) DO %VB% modifyvm "Ubuntu LXD %A" --groups "/%VG%"
 
 ```
 

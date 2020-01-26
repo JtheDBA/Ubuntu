@@ -5,6 +5,7 @@ Apt-Cacher NG is a caching proxy for software packages which are downloaded by U
 With 3 physical and dozens of virtual computers I save roughly 4 GB of traffic per month (average 63% hit rate; remember I have 7 different test desktop distributions that contribute to the "lower" hit rate).
 
 ## pre Install
+
 ### UFW
 
 If you use the Uncomplicated Firewall i.e. UFW create an "application" file and set appropriate allow from rules. Customize the allow from the subnets you use or tighten up the existing ones.

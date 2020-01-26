@@ -1,0 +1,10 @@
+ls -l /dev/disk/by-id/
+cat << FOOD
+Use the above to create the statements to create the zfs pool zp001 and the lxd dataset
+
+zpool create -o ashift=12 -O atime=off -O compression=lz4 -O normalization=formD -f zp001 mirror /dev/disk/by-id/@ /dev/disk/by-id/@
+zpool add zp001 log /dev/disk/by-id/@
+zpool status
+zfs create zp001/lxd
+
+FOOD

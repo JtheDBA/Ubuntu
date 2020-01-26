@@ -7,7 +7,7 @@
 >LXD is the new LXC experience. It offers a completely fresh and intuitive user experience with a single command line tool to manage your containers. Containers can be managed over the network in a transparent way through a REST API. It also works with large scale deployments by integrating with cloud platforms like OpenNebula and OpenStack.
 
 My experience with LXD can be summed up as an aging nerd screwing around while drinking beer. I have no professional experience with LXD but I believe it does have a place in the landscape of ? as a Service, clouds, containers, inserts buzzwords here.
-Here is my current drinking project/[Virtual Box LXD Lab](../virtualbox/LXD Lab.md)
+Here is my current drinking project/[Virtual Box LXD Lab](../virtualbox/LXD_Lab.md)
 
 ## Top Official Resources?
 
@@ -25,6 +25,8 @@ sudo snap install lxd
 ```
 
 If using BTRFS everything as of 18.04 LTS is ready. If using ZFS as a filesystem you will need to install the parts and restart: `sudo apt install -y zfsutils-linux; sudo shutdown -r 1; exit`
+
+If you want to use Linux bridges instead of LXD bridges then also: `sudo apt install -y bridge-utils`
 
 ## Resources
 

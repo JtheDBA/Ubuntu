@@ -1,7 +1,0 @@
-# /etc/fstab: static file system information.
-#
-` /               btrfs   defaults,noatime,subvol=@ 0       1
-` /home           btrfs   defaults,noatime,nodev,nosuid,subvol=@home 0 2
-/dev/mapper/temp_vg/lv_temp    /tmp     ext4    defaults,noatime,nodev,nosuid 0 2
-/dev/mapper/temp_vg/lv_swap    none     swap    sw              0       0
-` /var/log        btrfs   defaults,noatime,subvol=@var-log,compress 0 2
