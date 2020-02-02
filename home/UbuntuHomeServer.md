@@ -83,9 +83,24 @@ If you installed [apt-cacher-ng](../common/apt-cacher-ng.md) ... above ...
 ## Step 24 - 
 
 
+-  fail2ban
+   -  traefik
+      - sonarr
+      - plex
+      - grafana
+      - home assistant
+      
+   -  db
+   -  appdaemon
+   -  delugevpn
+   -  sanzbd
+   -  nzbbin
+   
 
 
 ```
+
+
 ../common
 ../desktop
 ../lxd
