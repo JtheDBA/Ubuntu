@@ -10,7 +10,7 @@
 SET VM=Ubuntu Server 18.04 LXD ZFS
 SET VG=Server Templates
 SET BF=%VDID%\%VG%
-%VB% clonevm "Ubuntu Server 18.04 BTRFS Secure EFI64" --snapshot "BASE2001" --options link --name "%VM%" --basefolder "%BF%" --register
+%VB% clonevm "Ubuntu Server 18.04 BTRFS Secure BIOS" --snapshot "BASE" --options link --name "%VM%" --basefolder "%BF%" --register
 %VB% modifyvm "%VM%" --groups "/%VG%"
 %VB% modifyvm "%VM%" --memory 4096
 %VB% modifyvm "%VM%" --nic2 bridged --cableconnected2 on --nictype2 virtio --bridgeadapter2 "%VNIC%" --nicpromisc2 allow-all
@@ -63,8 +63,8 @@ Run one of the following:
   - `lxd.init.btrfs.node1` - first node in a cluster
   - `lxd.init.btrfs.nodes` - other nodes in the cluster
 
-# Ignore EVERYTHING Beyond This Point
-  
+Ignore EVERYTHING Beyond This Point
+==================================================================================================================================================================================================================  
 
 ```Bash
 sudo -i
@@ -74,7 +74,6 @@ hostnamectl set-hostname ${NEWHO}
 sed -i -e "s/${OLDHO}/${NEWHO}/' /etc/hosts
 scp 192.168.0.184:server/lxd*
 . lxd.prep
-```
 
 apt-get purge -y lxd lxd-client
 apt-get install -y bridge-utils zfsutils-linux
@@ -145,13 +144,11 @@ FOOD
 reboot
 
 . updone
-```
 
 ## Snapshot and Create Lab Linked Clones
 
 Take a snapshot for the next steps,
 
-```
 %VB% snapshot "%VM%" take "BASE" --description "Base for linked clones"
 %VB% showvminfo "%VM%"
 SET VG=Ubuntu LXD Lab
@@ -159,7 +156,6 @@ SET BF=%VDID%\%VG%
 FOR %A IN (Node1 Node2 Node3) DO %VB% clonevm "Ubuntu Server 18.04 LXD ZFS" --snapshot "BASE" --options link --name "Ubuntu LXD %A" --basefolder "%VDID%" --register
 FOR %A IN (Node1 Node2 Node3) DO %VB% modifyvm "Ubuntu LXD %A" --groups "/%VG%"
 
-```
 
 # Standalone LXD
 
@@ -230,7 +226,7 @@ opyQ1VRpAg2sV2C4W8irbNqeUsTeZZxhLqp4vNOXXBBrSqUCdPu1JXADV0kavg1l
     value: ""
 
 
-```
+
 for Q in 2 3
 do
 sed -e "s/node1/node${Q}/;/storage_pools/,/ipv6/d;s/201/20${Q}/" lxdinit-node1 > lxdinit-node${Q}
@@ -247,9 +243,6 @@ cat >> lxdinit-node${Q} << FOOD
     value: ""
 FOOD
 done
-
-
-```
 
 config: {}
 networks: []
@@ -291,11 +284,6 @@ cluster:
     -----END CERTIFICATE-----
   server_address: 192.168.0.202:8443
   cluster_password: C7uster
-
-
-
-
-
 
 
 
@@ -509,3 +497,223 @@ cluster:
     -----END CERTIFICATE-----
   server_address: 192.168.0.203:8443
   cluster_password: C7uster
+
+
+
+
+SET VM=Ubuntu Server 18.04.2
+SET VG=Server Templates
+SET BF=%VDID%\%VG%
+%VB% createvm --name "%VM%" --groups "/Server Templates" --ostype Ubuntu_64 --register
+%VB% modifyvm "%VM%" --snapshotfolder default --clipboard bidirectional --draganddrop hosttoguest
+%VB% modifyvm "%VM%" --memory 2048 --boot1 dvd --boot2 disk --boot3 none --boot4 none --firmware efi --chipset piix3 --acpi on --ioapic on --rtcuseutc on --cpus 2 --cpuhotplug on --cpuexecutioncap 100 --pae on --paravirtprovider kvm --hpet on --hwvirtex on --nestedpaging on
+%VB% modifyvm "%VM%" --vram 16 --monitorcount 1 --accelerate3d off --audio none --usb on --usbehci on
+%VB% modifyvm "%VM%" --nic1 bridged --cableconnected1 on --nictype1 virtio --bridgeadapter1 "%VNIC%"
+%VB% storagectl "%VM%" --name "IDE" --add ide --controller PIIX4 --hostiocache on --bootable on
+%VB% storageattach "%VM%" --storagectl "IDE" --port 1 --device 0 --type dvddrive --medium "%VISO%\ubuntu-18.04-mini-amd64.iso"
+%VB% storagectl "%VM%" --name "SATA" --add sata --controller IntelAhci --portcount 6 --hostiocache off --bootable on
+%VB% createhd --filename "%BF%\%VM%\UBU18042S.vdi" --size 120000
+%VB% storageattach "%VM%" --storagectl "SATA" --port 0 --type hdd --medium "%BF%\%VM%\UBU18042S.vdi" --mtype normal
+%VB% startvm "%VM%"
+
+# Ubuntu LXD Base VB
+
+## Clone Mini VM
+
+SET VM=LXD BASE
+SET VG=Ubuntu LXD Lab
+SET BF=%VDID%\%VG%
+%VB% clonevm "UBU1804MINI" --snapshot "BASE" --options link --name "%VM%" --basefolder "%BF%" --register
+
+
+lxc network create lxdbr1 ipv4.nat=false ipv6.nat=false
+lxc network list
+
+lxc profile copy default lxdpr
+lxc profile  
+lxc profile  
+lxc profile  
+lxc profile  
+lxc profile  
+ubuntu/trusty
+enp0s25
+
+lxc image copy images:ubuntu/18.04 local:
+lxc image copy images:centos/7 local:
+
+lxc launch ubuntu:18.04 ubu1804
+lxc file push /etc/apt/apt.conf.d/01apt-cacher-ng-proxy ubu1804/etc/apt/apt.conf.d/01apt-cacher-ng-proxy
+lxc exec ubu1804 -- apt update
+lxc exec ubu1804 -- apt dist-upgrade -y
+lxc exec ubu1804 -- apt autoremove -y
+
+apt -y --purge autoremove
+apt -y autoclean
+apt -y clean
+apt update
+apt -y dist-upgrade
+
+lxc stop ubu1804
+lxc snapshot ubu1804 snap01
+lxc copy ubu1804/snap01 docker
+lxc config set docker security.nesting true
+lxc snapshot docker snap01
+
+https://homelab.city/ubuntu-18-04-lxd-zfs-docker-and-networking/
+https://lxd.readthedocs.io/en/latest/
+
+config:
+  environment.http_proxy: ""
+  security.privileged: "true"
+  user.network_mode: ""
+description: Exposed LXD profile
+devices:
+  eth0:
+    nictype: macvlan
+    parent: eno1
+    type: nic
+  eth1:
+    nictype: bridged
+    parent: lxdbr1
+    type: nic
+  root:
+    path: /
+    pool: default
+    type: disk
+name: exposed
+used_by: []
+
+
+
+lxc network create lxdbr1 ipv4.nat=false ipv6.nat=false
+
+lxc profile copy default private
+lxc profile copy default internal
+lxc profile copy internal external
+
+lxc profile edit external
+
+
+
+
+lxc profile create externalNET
+lxc profile edit externalNET
+config: {}
+description: "LXD profile to add external networking"
+devices:
+  eth2:
+    name: eth2
+    nictype: macvlan
+    parent: enp5s5
+    type: nic
+name: externalNET
+
+lxc profile create internalNET
+lxc profile edit internalNET
+
+joel@cbj-server:~$ lxc profile show internalNET
+config: {}
+description: "LXD profile to add internal networking"
+devices:
+  eth1:
+    name: eth1
+    nictype: bridged
+    parent: lxdbr1
+    type: nic
+name: internalNET
+used_by: []
+
+config:
+  environment.http_proxy: ""
+  security.privileged: "true"
+  user.network_mode: ""
+description: LXD profile with macvlan and internal networking
+devices:
+  eth0:
+    name: eth0
+    nictype: macvlan
+    parent: enp8s0
+    type: nic
+  eth1:
+    name: eth1
+    nictype: bridged
+    parent: lxdbr1
+    type: nic
+
+
+# Ubuntu LXD Base VB
+
+## Clone LXD BASE
+
+SET VM=LXD_Administrator
+SET VG=Ubuntu LXD Lab
+SET BF=%VDID%\%VG%
+%VB% clonevm "LXD BASE" --snapshot "BASE" --options link --name "%VM%" --basefolder "%BF%" --register
+%VB% startvm "%VM%"
+
+## Configure Step 1
+
+shell
+. upd
+sudo -i
+hostnamectl set-hostname lxd001
+sed -i -e 's/UBULXD-BASE/lxd001/' /etc/hosts
+
+
+config:
+  environment.http_proxy: ""
+  security.privileged: "true"
+  user.network_mode: ""
+description: LXD profile exposing eth0 to macvlan parent and a NATted bridge
+devices:
+  eth0:
+    nictype: macvlan
+    parent: enp0s3
+    type: nic
+  eth1:
+    nictype: bridged
+    parent: lxdbr0
+    type: nic
+  root:
+    path: /
+    pool: default
+    type: disk
+name: lxcpr0
+used_by: []
+
+SET VM=Ubuntu Server 18.04 LXD Base
+SET VG=Server Templates
+SET BF=%VDID%\%VG%
+%VB% createhd --filename "%VSSD%\UBU1804S_LXD1.vdi" --size 240001
+%VB% createhd --filename "%VSSD%\UBU1804S_LXD2.vdi" --size 240002
+%VB% storageattach "%VM%" --storagectl "SATA" --port 1 --type hdd --medium "%VSSD%\UBU1804S_LXD1.vdi" --mtype normal
+%VB% storageattach "%VM%" --storagectl "SATA" --port 2 --type hdd --medium "%VSSD%\UBU1804S_LXD2.vdi" --mtype normal
+%VB% startvm "%VM%"
+
+
+"C:\Program Files (x86)\PuTTY\putty.exe" joel@192.168.0.
+
+scp 192.168.0.84:vbox/upd* .
+
+sudo -i
+
+mkfs.btrfs -f /dev/sdb /dev/sdc
+vi /etc/fstab
+/dev/sdb /var/lib/lxd btrfs defaults,compress=lzo 0 1
+:x
+cd /var/lib
+mv lxd lxd.bkp
+mkdir lxd
+mount /var/lib/lxd
+
+%VB% snapshot "%VM%" take "LXDBASE" --description "Create BASE snapshot for multiple LXD linked clones"
+
+SET VG=LXD Lab
+SET BF=%VDID%\%VG%
+%VB% clonevm "%VM%" --snapshot "LXDBASE" --options link --name "Ubuntu LXD1" --basefolder "%BF%" --register
+%VB% clonevm "%VM%" --snapshot "LXDBASE" --options link --name "Ubuntu LXD2" --basefolder "%BF%" --register
+%VB% clonevm "%VM%" --snapshot "LXDBASE" --options link --name "Ubuntu LXD3" --basefolder "%BF%" --register
+%VB% modifyvm "Ubuntu LXD1" --groups "/LXD Lab"
+%VB% modifyvm "Ubuntu LXD2" --groups "/LXD Lab"
+%VB% modifyvm "Ubuntu LXD3" --groups "/LXD Lab"
+
