@@ -25,7 +25,7 @@ There is crap for home users and crap for professional uses i.e. small businesse
 Common crap is crap that both home and professional users could potentially benefit from including:
 
 *  centralized apt package cache [apt-cacher-ng](common/apt-cacher-ng.md) - download packages once instead of for each existing or new installation
-*  centralized location for software and .iso [images](common/Maintaining%20Local%20Images.md) - see above
+*  centralized location for software and .iso [images](common/MaintainingLocalImages.md) - see above
 *  centralized location for basic installation and operational scripts - need something? go here
 
 # Servers
@@ -35,11 +35,11 @@ Common crap is crap that both home and professional users could potentially bene
 
 # Desktops
 
-Simple desktop crap. Including how to [quickly create a VirtualBox VM](virtualbox/Ubuntu%20Desktops%20in%20VirtualBox.md)  for anything you have an .iso image for.
+Simple desktop crap. Including how to [quickly create a VirtualBox VM](virtualbox/UbuntuDesktopsVirtualBox.md) for anything you have an .iso image for.
 
 # VirtualBox Labs
 
--  [LXD Lab](virtualbox/LXD%20Lab.md)
+-  [LXD Lab](virtualbox/LXD_Lab.md)
 -  [Docker Lab](virtualbox/Docker%20Lab.md)
 
 # Neat Projects
