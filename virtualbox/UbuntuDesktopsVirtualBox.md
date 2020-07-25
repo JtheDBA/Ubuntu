@@ -24,11 +24,15 @@ I have tested and used the following (in descending order from favorite to insta
 
 -  MX-18.3_x64
 -  MX-19_x64
--  xubuntu-18.04.2-desktop-amd64
--  ubuntu-18.04.2-desktop-amd64
+-  xubuntu-20.04-desktop-amd64
+-  ubuntu-mate-20.04-desktop-amd64
+-  ubuntu-20.04-desktop-amd64
+-  xubuntu-18.04.4-desktop-amd64
+-  ubuntu-mate-18.04.4-desktop-amd64
+-  ubuntu-18.04.4-desktop-amd64
 -  ubuntu-19.04-desktop-amd64
--  lubuntu-18.04.2-desktop-amd64
--  kubuntu-18.04.2-desktop-amd64
+-  lubuntu-18.04.4-desktop-amd64
+-  kubuntu-18.04.4-desktop-amd64
 
 I highly recommend using the name of the .iso install CD/DVD for the VM name and virtual disk for simplicity, consistency and pure laziness. Example:
 

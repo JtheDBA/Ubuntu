@@ -7,7 +7,7 @@
 
 # Connecting to Windows Shares
 
-I have tested connections from Ubuntu 18.04 to shares on the following
+I have tested connections from Ubuntu 18.04 and 20.04 to shares on the following
 
 -  //192.168.0.080/stuff - Windows Server 2016 server
 -  //192.168.0.129/stuff - Netgear ReadyNAS 104
