@@ -23,7 +23,7 @@ SET BF=%VDID%\%VG%
 %VB% startvm "%VM%"
 ```
 
-## Prepare LXD Standalone and BASE Snapshot for Cluster Nodes
+## Prepare LXD  BASE Snapshot
 
 I love doing everything through copy and paste via PuTTY: `"C:\Program Files (x86)\PuTTY\putty.exe" sadmin@192.168.0.?`
 
@@ -40,19 +40,14 @@ scp 192.168.0.184:server/lxd*
 
 The next steps depend upon the backing file system you choose: ZFS (recommended ???) or BTRFS (no official recommendation)
 
-## ZFS
-
-Run `lxd.zfs.prep1` - the preparation script will restart your computer!
+### ZFS
+-  Run `lxd.zfs.prep1` - the preparation script will restart your computer!
 
 Run `lxd.zfs.prep2` - this will list the unique identifiers for each disk and partition on your machine and print the basic shell for creating a ZFS pool, adding a SLOG, and creating a dataset to use for LXD.
 Obviously this could be scripted but, why..? 
 
-Run one of the following:
-  - `lxd.init.zfs.standalone`
-  - `lxd.init.zfs.node1` - first node in a cluster
-  - `lxd.init.zfs.nodes` - other nodes in the cluster
 
-## BTRFS
+### BTRFS
 
 Run `lxd.btrfs.prep1` - the preparation script will restart your computer!
 
@@ -65,6 +60,15 @@ Run one of the following:
 
 Ignore EVERYTHING Beyond This Point
 ==================================================================================================================================================================================================================  
+
+
+
+Run one of the following:
+  - `lxd.init.zfs.standalone`
+  - `lxd.init.zfs.node1` - first node in a cluster
+  - `lxd.init.zfs.nodes` - other nodes in the cluster
+
+
 
 ```Bash
 sudo -i
