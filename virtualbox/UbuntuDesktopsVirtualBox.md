@@ -124,7 +124,7 @@ There are two options: install guest additions from the OS repository or use the
 To use the repository; more than likely the installer detected it was running in a VM and these packages are already installed but if not:
 
 ``` Bash
-sudo apt install -y virtualbox-guest-dkms
+sudo apt install -y virtualbox-guest-dkms virtualbox-guest-x11 virtualbox-guest-utils
 sudo shutdown -h now; exit
 ```
 
