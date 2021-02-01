@@ -3,6 +3,7 @@
 ## Important
 
 -  Oracle VM VirtualBox Base Packages are freely available for Windows, Mac OS X, Linux and Solaris x86 platforms under GPLv2. **Oracle VM VirtualBox Extension Pack is free for personal, educational or evaluation use under the terms of the [VirtualBox Personal Use and Evaluation License](https://www.virtualbox.org/wiki/VirtualBox_PUEL) on Windows, Mac OS X, Linux and Solaris x-86 platforms. (else $$ varying upon who you ask but $1000 per socket or $50 per user with 200 user minimum)**
+-  If on a Windows 10 Host - please [disable Hyper-V](https://www.reddit.com/r/virtualbox/wiki/index/howtomakeavm). 
 -  *Standard disclaimer: do not assume I know what I am doing or any instructions below should be used outside of personal experimentation and learning. All comments are my own and do not reflect the thoughts or direction of my employer, family, friends, favorite television and radio station or anything else.*
 
 This document attempts to simply the installation of Ubuntu desktops into VirtualBox virtual machines using a script for VM creation.
@@ -17,6 +18,30 @@ Of course there are some limits and assumptions.
 -  as with most every other document in this repository, it assumes you have a central apt cache (apt-cacher-ng)
 -  the .iso images for Debian/Ubuntu installers are in a central location
 -  a common VirtualBox script is used to setup variables in a command prompt / shell
+
+## Host Setup
+
+### Windows 10
+
+*99.9% of the time when something goes wrong (especially since version 6.1 launched) one of the following 2 issues is the problem:*
+
+-  *You are running Windows 10, and you haven't disabled Hyper-V. You need to follow the steps in the section below.*
+-  *You have not enabled hardware virtualization in your BIOS. You can either do that (easy method) or downgrade to v6.0 or v5.2 (lame method).*
+
+#### Disabling Hyper-V
+
+*You need to get to the "Windows Features": Click the Start button. Click Control Panel. Click Programs. Click Turn Windows features on or off. Then set the following:*
+
+-  Disabled -> Hyper-V
+-  Enabled -> Virtual Machine Platform
+-  Enabled -> Windows Hypervisor Platform
+-  Disabled -> Windows Sandbox
+
+*Then, you should also do the following. Right-click the start button, and choose PowerShell (Admin) or Command Prompt (Admin) and run the following command and reboot your machine:*
+
+```
+bcdedit /set hypervisorlaunchtype off
+```
 
 ## VM name
 
@@ -49,6 +74,7 @@ Tailor to your personal environment. For most of my host computers 2 CPUs and 4G
 `%VB% modifyvm "%VM%" --vram 128 --monitorcount 1 --graphicscontroller vmsvga --accelerate3d off --audio dsound --audiocontroller ac97 --audiocodec ad1980 --usb on --usbehci on`
 
 As of VirtualBox version 6, I have found the vmsvga graphics controller with 3-D acceleration off to be the best performing settings for most use cases on a Windows host.
+
 Of course, this may differ on a Linux host and most experts recommend using the VirtualBox vboxsvga graphics controller. But for Linux virtual machines the graphics settings below seem to work best after the VirtualBox guest additions have been installed.
 I tried playing YouTube music and videos and playing the old Maelstrom video game to test performance and stability.
 If anyone has recommendations for setup please share them.
@@ -88,7 +114,7 @@ SET BF=%VDID%\%VG%
 %VB% modifyvm "%VM%" --memory 4096 --boot1 dvd --boot2 disk --boot3 none --boot4 none --chipset piix3 --ioapic on --firmware bios --rtcuseutc on
 %VB% modifyvm "%VM%" --cpus 2 --cpuhotplug on --cpuexecutioncap 100 --pae on --nested-hw-virt on
 %VB% modifyvm "%VM%" --paravirtprovider kvm --hwvirtex on --nestedpaging on
-%VB% modifyvm "%VM%" --vram 128 --monitorcount 1 --graphicscontroller vmsvga --accelerate3d off --audio dsound --audiocontroller ac97 --audiocodec ad1980 --usb on --usbehci on
+%VB% modifyvm "%VM%" --vram 256 --monitorcount 1 --graphicscontroller vmsvga --accelerate3d on --audio dsound --audiocontroller ac97 --audiocodec ad1980 --usb on --usbehci on
 %VB% modifyvm "%VM%" --nic1 bridged --cableconnected1 on --nictype1 virtio --bridgeadapter1 "%VNIC%"
 %VB% storagectl "%VM%" --name "IDE" --add ide --controller PIIX4 --hostiocache on --bootable on
 %VB% storageattach "%VM%" --storagectl "IDE" --port 1 --device 0 --type dvddrive --medium "%VISO%\%VM%.iso"

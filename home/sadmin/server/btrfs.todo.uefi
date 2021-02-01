@@ -6,25 +6,32 @@ function btrfs_move {
 	if [ "$(ls -A ${1}.bkp)" ]; then cp -aur ${1}.bkp/* ${1}/; fi
 	rm -rf ${1}.bkp
 }
-cd /b/@/boot/grub
-btrfs_move x86_64-efi
-cd /b/@/var
-btrfs_move cache
-btrfs_move mail 2775 root mail
-btrfs_move spool
-btrfs_move snap
-btrfs_move tmp 1775
-btrfs_move crash 1777
 cd /b
 btrfs subvolume create @snapshots
+btrfs subvolume create @var-audit
+chattr +c ./@var-audit
 btrfs subvolume create @var-log
 chattr +c ./@var-log
 cp -aur @/var/log/* @var-log/
 rm -rf @/var/log/*
+mkdir @var-log/audit
+btrfs subvolume create @var-tmp
+cp -aur @/var/tmp/* @var-tmp/
+rm -rf @/var/tmp/*
+btrfs subvolume create @var
+chattr +C ./@var
+cp -aur @/var/* @var/
+rm -rf @/var/*
+cd /b/@var
+btrfs_move cache
+btrfs_move mail 2775 root mail
+btrfs_move spool
+btrfs_move snap
+btrfs_move crash 1777
+cd /b
 rm /b/@/etc/fstab
 mv /b/@/root/fstab.new /b/@/etc/fstab
 cd /
 umount /b
 sync
 shutdown -h now
-
