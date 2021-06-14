@@ -1,0 +1,24 @@
+# Create LVM Volume Group data_vg on default device /dev/sdc
+# Status: was working, vars have not been tested
+#
+- name: Create LVM Volume Group data_vg on /dev/sdc
+  hosts: all
+  become: yes
+
+  vars:
+    volume_group: data_vg
+    pv_device: /dev/sdc
+
+  tasks:
+
+  - name: New partition on device
+    parted:
+      device: "{{ pv_device }}"
+      number: 1
+      label: gpt
+      state: present
+
+  - name: Creates data volume group
+    lvg:
+      vg: "{{ volume_group }}"
+      pvs: "{{ pv_device }}1"

@@ -7,7 +7,6 @@
 >LXD is the new LXC experience. It offers a completely fresh and intuitive user experience with a single command line tool to manage your containers. Containers can be managed over the network in a transparent way through a REST API. It also works with large scale deployments by integrating with cloud platforms like OpenNebula and OpenStack.
 
 My experience with LXD can be summed up as an aging nerd screwing around while drinking beer. I have no professional experience with LXD but I believe it does have a place in the landscape of ? as a Service, clouds, containers, inserts buzzwords here.
-Here is my current drinking project/[Virtual Box LXD Lab](../virtualbox/LXD_Lab.md)
 
 ## Top Official Resources?
 

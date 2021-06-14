@@ -1,0 +1,46 @@
+# Create and Format Logical Volumes for Docker
+# Status: working
+#
+- name: Create and Format Logical Volumes for Docker
+  hosts: all
+  become: yes
+
+  vars:
+    volume_group: data_vg
+    docker_base: lv_docker
+    docker_data: lv_srv_docker
+
+  tasks:
+  - name: Create logical volume for Docker base
+    lvol:
+      vg: "{{ volume_group }}"
+      lv: "{{ docker_base }}"
+      size: 32g
+  - name: Create an EXT4 filesystem for Docker base
+    filesystem:
+      fstype: ext4
+      dev: "/dev/mapper/{{ volume_group }}-{{ docker_base }}"
+  - name: Mount Docker base
+    mount:
+      path: /var/lib/docker
+      src: "/dev/mapper/{{ volume_group }}-{{ docker_base }}"
+      fstype: ext4
+      opts: defaults
+      state: mounted
+
+  - name: Create logical volume for Docker data
+    lvol:
+      vg: "{{ volume_group }}"
+      lv: "{{ docker_data }}"
+      size: 32g
+  - name: Create an EXT4 filesystem for Docker data
+    filesystem:
+      fstype: ext4
+      dev: "/dev/mapper/{{ volume_group }}-{{ docker_data }}"
+  - name: Mount Docker data
+    mount:
+      path: /srv/docker
+      src: "/dev/mapper/{{ volume_group }}-{{ docker_data }}"
+      fstype: ext4
+      opts: defaults
+      state: mounted

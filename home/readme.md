@@ -9,11 +9,12 @@ It is also a location for how to build a central server for your home with all o
 ## home (The Directory)
 
 -  sadmin
+   -  ansible - Ansible playbooks and other goodies
    -  common - three common files used in almost all other sub directories via symbolic link
    -  desktop - files used automate the installation of software on Ubuntu desktops
    -  hyperv - files used on a Hyper-V virtual machine
    -  kvm - files used on a KVM virtual machine
-   -  lxc - files used within a LXE container
+   -  lxc - files used within a LXD container
    -  server - files used on servers to automate  most basic preparatory an update steps
    -  vbox - files used in a virtual box virtual machine
    -  wsl - files used in a Windows subsystem for Linux Ubuntu installation

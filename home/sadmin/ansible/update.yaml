@@ -1,0 +1,15 @@
+# Update package lists and upgrade distribution only downloading updates, not installing them, serially to not overwhelm the apt-cache
+# Status: working
+# Note: see Library/apt.py - using a tested but uncommitted extension to support download_only
+#
+- name: Update and upgrade apt packages
+  hosts: all
+  serial: 1
+  become: yes
+
+  tasks:
+  - name: Update all packages on a Debian/Ubuntu
+    apt:
+        update_cache: yes
+        upgrade: dist 
+        download_only: yes

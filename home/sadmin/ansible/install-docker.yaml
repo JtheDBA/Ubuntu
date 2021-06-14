@@ -1,0 +1,69 @@
+# Install Docker CE on Ubuntu 20.04 machines
+# Status: working
+# Note: either update the docker_compose_version variable or supply as extra variable on command line i.e. -e docker_compose_version=1.29.1
+#
+- name: Install Docker CE
+- hosts: all
+  become: yes
+  serial:
+    - 1
+    - 2
+  vars:
+    docker_compose_version: "1.29.1"
+  tasks:
+
+    - name: Install required system packages
+      apt:
+        name:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - gnupg-agent
+          - python3-pip
+          - virtualenv
+          - python3-setuptools
+          - software-properties-common
+        state: present
+
+    - name: Add Dockers official GPG key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Add Docker Repository
+      apt_repository:
+        repo: deb [arch=amd64] http://download.docker.com/linux/ubuntu focal stable
+        state: present
+        filename: docker
+        update_cache: yes
+
+    - name: Install Docker
+      apt:
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+        state: present
+
+    - name: Add user to docker group
+      user:
+        name: "joel"
+        group: docker
+
+    - name: Install Docker Module for Python
+      pip:
+        name: docker
+
+    - name: Download docker-compose {{ docker_compose_version }}
+      get_url:
+        url : https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-Linux-x86_64
+        dest: ~/docker-compose
+        mode: '+x'
+
+    - name: Check docker-compose exists
+      stat: path=~/docker-compose
+      register: docker_compose
+
+    - name: Move docker-compose to /usr/local/bin/docker-compose
+      command: mv ~/docker-compose /usr/local/bin/docker-compose
+      when: docker_compose.stat.exists

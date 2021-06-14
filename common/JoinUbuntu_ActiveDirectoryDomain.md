@@ -1,5 +1,7 @@
 # Join Ubuntu to Active Directory Domain
 
+Status: *untested*
+
 ## Realmd
 
 [Join in Windows Active Directory Domain with Realmd](https://www.server-world.info/en/note?os=Ubuntu_18.04&p=realmd)

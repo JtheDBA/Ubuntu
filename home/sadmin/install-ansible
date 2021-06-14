@@ -1,0 +1,22 @@
+echo "Install"
+
+sudo apt update
+sudo apt install ansible
+sudo cp ~/ansible/inventory /etc/ansible/hosts
+
+echo "Copy SSH keys"
+
+for IP in `sed -e '/[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}/!d;/^#/d;s/^.*\([0-9]\{3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\).*$/\1/' /etc/ansible/hosts | sort -u`; do 
+ssh-copy-id sadmin@${IP}
+done
+
+echo "Create aliases"
+
+cat >> ~/.bash_aliases << FOOD
+alias apb='ansible-playbook -K '
+alias apbl='ansible-playbook -K -l '
+alias apbi='ansible-playbook -K -i '
+alias mkcd='mkdircd(){ mkdir \$1; cd \$1 }; mkdircd'
+FOOD
+
+echo "Done..."

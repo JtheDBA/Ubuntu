@@ -1,0 +1,12 @@
+# Shutdown servers - useful when updating dozens of temporary machines or when a tornado changes direction and things need shutdown NOW 
+# Status: working
+#
+- name: Shutdown servers
+  hosts: all
+  become: yes
+  tasks:
+  - name: Shutdown
+    shell: sleep 10 && /sbin/shutdown -h now 'Shutting down now'
+    async: 300
+    poll: 0
+    ignore_errors: true

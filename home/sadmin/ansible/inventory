@@ -1,0 +1,27 @@
+# This is the default ansible 'hosts' file and should live in /etc/ansible/hosts
+
+[xeon]
+media-server  ansible_host=192.168.10.109
+pi-hole       ansible_host=192.168.10.111
+docker01      ansible_host=192.168.10.100
+killbot-5000  ansible_host=192.168.10.127
+
+[vishera]
+dork1 ansible_host=192.168.10.201
+dork2 ansible_host=192.168.10.202
+dork3 ansible_host=192.168.10.203
+dork4 ansible_host=192.168.10.204
+
+[kaveri]
+dork5 ansible_host=192.168.10.205
+dork6 ansible_host=192.168.10.206
+dork7 ansible_host=192.168.10.207
+dork8 ansible_host=192.168.10.208
+
+[physical]
+crew-black ansible_host=192.168.10.66
+crew-gold  ansible_host=192.168.10.71
+cbj-cannon ansible_host=192.168.10.67
+
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3

@@ -15,7 +15,7 @@ Personally I would purchase a NAS storage device that has the abilities create a
 
 then you can follow my "guide" to accomplish most if not all of that. 
 
-**_ IGNORE EVERYTHING BEYOND THIS POINT _***
+# IGNORE EVERYTHING BEYOND THIS POINT
 
 ## Step 1 - Physical or Virtual
 
@@ -95,7 +95,6 @@ If you installed [apt-cacher-ng](../common/apt-cacher-ng.md) ... above ...
    -  delugevpn
    -  sanzbd
    -  nzbbin
-   
 
 
 ```

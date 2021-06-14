@@ -1,6 +1,6 @@
 # Kubernetes
 
-Nothing here yet
+*Nothing here yet*
 
 Kubernetes Objects
 Kubernetes defines a set of building blocks ("primitives"), which collectively provide mechanisms that deploy, maintain, and scale applications based on CPU, memory[14] or custom metrics.[15] Kubernetes is loosely coupled and extensible to meet different workloads. This extensibility is provided in large part by the Kubernetes API, which is used by internal components as well as extensions and containers that run on Kubernetes.[16] The platform exerts its control over compute and storage resources by defining resources as Objects, which can then be managed as such. The key objects are:
