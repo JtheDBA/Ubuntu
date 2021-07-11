@@ -1,5 +1,7 @@
 # Kubernetes Components
 
+*Notes*
+
 ## Control Plane Components
 
 
